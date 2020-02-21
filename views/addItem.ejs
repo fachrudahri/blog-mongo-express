@@ -1,0 +1,50 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-user-plus"></i> Add Asset
+        </h1>
+        <%- include ('./partials/messages') %>
+        <form action="/users/add" method="POST">
+          <div class="form-group">
+            <label for="codeName">Code Name</label>
+            <input
+              type="codeName"
+              id="codeName"
+              name="codeName"
+              class="form-control"
+              placeholder="Enter codeName"
+              value="<%= typeof codeName != 'undefined' ? codeName : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Enter Name"
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="departement">departement</label>
+            <input
+              type="departement"
+              id="departement"
+              name="departement"
+              class="form-control"
+              placeholder="Create departement"
+              value="<%= typeof departement != 'undefined' ? departement : '' %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Add Asset
+          </button>
+        </form>
+        <!-- <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p> -->
+      </div>
+    </div>
+  </div>
+  
