@@ -132,7 +132,7 @@ router.post('/add', (req, res) => {
                 newData.save()
                 .then(data => {
                     req.flash('success_msg', 'data added')
-                    res.redirect('/users/add')
+                    res.redirect('/dashboard/')
                 }).catch(err => console.log(err))
             }
         })
