@@ -2,9 +2,10 @@
 <p class="lead mb-3">Welcome</p>
 
 <h1 class="mt-4">List Data Asset</h1>
+<input class="form-control search-input" type="search" placeholder="Search..." data-table="customers-list"/>
 <h4><a href="/users/add">Add Assets</a></h4>
 <div class="tableku">
-    <table border="1" cellspacing="0" cellpadding="5">
+    <table class="customers-list" border="1" cellspacing=>
         <%- include ('./partials/messages') %>
         <thead>
             <th>NAME CODE</th>
@@ -32,3 +33,5 @@
 </div>
 
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<script src="/javascripts/filter.js"></script>
