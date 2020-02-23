@@ -36,18 +36,35 @@ router.get('/dashboard/', ensureAuthenticated, (req, res) =>{
     })
 })
 
-router.get('/dashboard/:_id',ensureAuthenticated,(req, res) => {
+router.get('/dashboard/data/:_id',ensureAuthenticated,(req, res) => {
     Data.findById(mongoose.Types.ObjectId(req.params._id)).then(datafound => {
 
             res.render('detail', {codename: datafound.codeName ,name: datafound.name, departement: datafound.departement, date: datafound.date})
     }).catch(err => console.log(err))
 })
 
-router.get('/dashboard/:_id/delete', ensureAuthenticated, (req, res) => {
+router.get('/dashboard/delete/:_id', ensureAuthenticated, (req, res) => {
     Data.findByIdAndDelete(mongoose.Types.ObjectId(req.params._id)).then(found => {
         req.flash('success_msg', 'Data Asset berhasil di hapus')
         res.redirect('/dashboard')
     }).catch(err => console.log(err))
+})
+
+router.get('/dashboard/update/:_id', ensureAuthenticated, (req, res) => {
+    Data.findById(mongoose.Types.ObjectId(req.params._id)).then(found => {
+        res.render('update', {id: found._id})
+    })
+})
+
+router.post('/dashboard/update/:_id', ensureAuthenticated, (req, res) => {
+    Data.findById(req.params._id).then(found => {
+        found.name = req.body.name
+        found.departement = req.body.departement
+        found.save().then(() => {
+            req.flash('success_msg', 'Data berhasil diperbaharui')
+            res.redirect('/dashboard')
+        }).catch(err => console.log(err))
+    })
 })
 
 // router.get('/dashboard/:codename', (req, res) => {
